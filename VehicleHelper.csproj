@@ -8,7 +8,7 @@
         <GenerateNugetPackage>true</GenerateNugetPackage>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageTags>openmod openmod-plugin unturned</PackageTags>
-        <RootNamespace>Hippisownia</RootNamespace>
+        <RootNamespace>VehicleHelper</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateNugetPackage>true</GenerateNugetPackage>
         <Product>Vehicle Helper Plugin</Product>

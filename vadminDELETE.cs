@@ -7,7 +7,7 @@ using SDG.Unturned;
 using UnityEngine;
 using Command = OpenMod.Core.Commands.Command;
 
-namespace Hippisownia
+namespace VehicleHelper
 {
     [Command("delete")] 
     [CommandDescription("Deletes the vehicle you are looking at")]

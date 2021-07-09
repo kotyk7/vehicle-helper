@@ -1,16 +1,13 @@
 using System;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using OpenMod.Core.Commands;
 using OpenMod.Unturned.Commands;
 using OpenMod.Unturned.Users;
 using SDG.Unturned;
 using UnityEngine;
-using static UnityEngine.Color;
 using Color = System.Drawing.Color;
-using Command = OpenMod.Core.Commands.Command;
 
-namespace Hippisownia
+namespace VehicleHelper
 {
     [Command("move")] 
     [CommandDescription("Moves the vehicle you are sitting in to y+10")]

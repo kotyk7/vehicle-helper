@@ -1,14 +1,14 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using Cysharp.Threading.Tasks;
-using OpenMod.Unturned.Plugins;
 using OpenMod.API.Plugins;
+using OpenMod.Unturned.Plugins;
 
 [assembly: PluginMetadata("VehicleHelper", DisplayName = "VehicleHelper Plugin")]
 
-namespace Hippisownia
+namespace VehicleHelper
 {
     public class Plugin : OpenModUnturnedPlugin
     {

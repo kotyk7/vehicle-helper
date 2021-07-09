@@ -3,9 +3,10 @@ using Cysharp.Threading.Tasks;
 using OpenMod.Core.Commands;
 using OpenMod.Unturned.Commands;
 using OpenMod.Unturned.Users;
+
 #pragma warning disable 1998
 
-namespace Hippisownia
+namespace VehicleHelper
 {
     [Command("vehicleadmin")]
     [CommandAlias("vadmin")]
