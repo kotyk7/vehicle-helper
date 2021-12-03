@@ -25,7 +25,7 @@ namespace Hippisownia.VehicleHelper
 
         protected override async UniTask OnLoadAsync()
         {
-            m_Logger.LogInformation("Vehicle Helper by kotyk");
+            m_Logger.LogInformation("Vehicle Helper by kotyk v1.2");
             m_Logger.LogInformation("For support create an issue on https://github.com/kotyk7/vehicle-helper");
         }
     }

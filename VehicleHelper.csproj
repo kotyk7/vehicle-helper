@@ -17,9 +17,11 @@
         <WarningsAsErrors>nullable</WarningsAsErrors>
         <NoWarn>$(NoWarn);NU1701;NU1702;CS0436;CS1998</NoWarn>
         <LangVersion>9.0</LangVersion>
-        <Version>1.1.0</Version>
-        <InformationalVersion>1.1.0</InformationalVersion>
-        <PackageVersion>1.1.0</PackageVersion>
+        <Version>1.2.0</Version>
+        <InformationalVersion>1.2.0</InformationalVersion>
+        <PackageVersion>1.2.0</PackageVersion>
+        <PackageProjectUrl>https://github.com/kotyk7/vehicle-helper</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/kotyk7/vehicle-helper</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
