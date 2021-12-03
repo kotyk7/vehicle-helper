@@ -1,2 +1,1 @@
-# See https://openmod.github.io/openmod-docs/devdoc/concepts/configuration.html
-# You can delete this file if you do not need a configuration
+default_ray_range: 20 # the max distance the vehicle can be far away from you to catch it

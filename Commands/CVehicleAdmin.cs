@@ -4,23 +4,22 @@ using OpenMod.Core.Commands;
 using OpenMod.Unturned.Commands;
 using OpenMod.Unturned.Users;
 
-#pragma warning disable 1998
-
-namespace VehicleHelper
+namespace Hippisownia.VehicleHelper.Commands
 {
     [Command("vehicleadmin")]
     [CommandAlias("vadmin")]
     [CommandDescription("Moving/deleting vehicles")]
+    [CommandSyntax("<delete/move>")]
     [CommandActor(typeof(UnturnedUser))]
-    public class VehicleAdmin : UnturnedCommand
+    public class CVehicleAdmin : UnturnedCommand
     {
-        public VehicleAdmin(IServiceProvider serviceProvider) : base(serviceProvider)
+        public CVehicleAdmin(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
 
         protected override async UniTask OnExecuteAsync()
         {
-            await Context.Actor.PrintMessageAsync("Command usage: /vadmin delete/move");
+            throw new CommandWrongUsageException(Context);
         }
     }
 }

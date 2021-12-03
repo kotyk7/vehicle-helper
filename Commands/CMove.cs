@@ -1,33 +1,46 @@
 using System;
 using Cysharp.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using OpenMod.Core.Commands;
 using OpenMod.Unturned.Commands;
 using OpenMod.Unturned.Users;
+using OpenMod.Unturned.Vehicles;
 using SDG.Unturned;
+using Steamworks;
 using UnityEngine;
 using Color = System.Drawing.Color;
 
-namespace VehicleHelper
+namespace Hippisownia.VehicleHelper.Commands
 {
     [Command("move")] 
-    [CommandDescription("Moves the vehicle you are sitting in to y+10")]
+    [CommandDescription("Moves the vehicle you are looking at")]
+    [CommandSyntax("<x/y/z> <int>")]
     [CommandActor(typeof(UnturnedUser))]
-    [CommandParent(typeof(VehicleAdmin))] // set "awesome" as parent.
-    public class vadminMOVE : UnturnedCommand
+    [CommandParent(typeof(CVehicleAdmin))]
+    public class CMove : UnturnedCommand
     {
-        public vadminMOVE(IServiceProvider serviceProvider) : base(serviceProvider)
+        private readonly IConfiguration m_Configuration;
+        
+        public CMove(IServiceProvider serviceProvider, IConfiguration mConfiguration) : base(serviceProvider)
         {
+            m_Configuration = mConfiguration;
         }
 
         protected override async UniTask OnExecuteAsync()
         {
             var uPlayer = (UnturnedUser) Context.Actor;
             var player = uPlayer.Player;
+            
+            if (Context.Parameters.Length != 2)
+                throw new CommandWrongUsageException(Context);
 
+            float distance = m_Configuration.GetSection("default_ray_range").Get<float>();
 
-            Physics.Raycast(player.Player.look.aim.position, player.Player.look.aim.forward, out var hit, 25f,
-                RayMasks.VEHICLE);
-            var vehicle = hit.transform.gameObject.GetComponent<InteractableVehicle>();
+            await UniTask.SwitchToMainThread();
+
+            InteractableVehicle? vehicle = Physics.Raycast(player.Player.look.aim.position, player.Player.look.aim.forward, out var hit, distance, RayMasks.VEHICLE) 
+                ? hit.transform.gameObject.GetComponent<InteractableVehicle>() 
+                : null;
 
             if (player.CurrentVehicle != null)
             {
@@ -54,14 +67,12 @@ namespace VehicleHelper
                         vehicle.transform.position += new Vector3(0, 0, howMuch);
                         break;
                     default:
-                        await UniTask.SwitchToThreadPool();
-                        await player.PrintMessageAsync("Usage: /vadmin move x/y/z int");
                         return;
                 }
 
                 await UniTask.SwitchToThreadPool();
                 
-                await player.PrintMessageAsync($"{vehicle.asset.name} - {way} += {howMuch}", Color.LawnGreen);
+                await player.PrintMessageAsync($"{vehicle.asset.name} - {way} += {howMuch}", Color.Yellow);
             }
             else
             {

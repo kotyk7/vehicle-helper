@@ -1,44 +1,32 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using OpenMod.API.Plugins;
 using OpenMod.Unturned.Plugins;
 
-[assembly: PluginMetadata("VehicleHelper", DisplayName = "VehicleHelper Plugin")]
+[assembly: PluginMetadata("Hippisownia.VehicleHelper", 
+    DisplayName = "Vehicle Helper Plugin",
+    Author = "kotyk",
+    Website = "https://github.com/kotyk7/vehicle-helper",
+    Description = "Move or delete your vehicles with simple commands!")]
 
-namespace VehicleHelper
+namespace Hippisownia.VehicleHelper
 {
-    public class Plugin : OpenModUnturnedPlugin
+    public class VehicleHelperPlugin : OpenModUnturnedPlugin
     {
-        private readonly IConfiguration m_Configuration;
-        private readonly IStringLocalizer m_StringLocalizer;
-        private readonly ILogger<Plugin> m_Logger;
+        private readonly ILogger<VehicleHelperPlugin> m_Logger;
 
-        public Plugin(
-            IConfiguration configuration,
-            IStringLocalizer stringLocalizer,
-            ILogger<Plugin> logger,
+        public VehicleHelperPlugin(
+            ILogger<VehicleHelperPlugin> logger,
             IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            m_Configuration = configuration;
-            m_StringLocalizer = stringLocalizer;
             m_Logger = logger;
         }
 
         protected override async UniTask OnLoadAsync()
         {
-            // await UniTask.SwitchToMainThread(); uncomment if you have to access Unturned or UnityEngine APIs
-            m_Logger.LogInformation("Hello World!");
-
-            // await UniTask.SwitchToThreadPool(); // you can switch back to a different thread
-        }
-
-        protected override async UniTask OnUnloadAsync()
-        {
-            // await UniTask.SwitchToMainThread(); uncomment if you have to access Unturned or UnityEngine APIs
-            m_Logger.LogInformation(m_StringLocalizer["plugin_events:plugin_stop"]);
+            m_Logger.LogInformation("Vehicle Helper by kotyk");
+            m_Logger.LogInformation("For support create an issue on https://github.com/kotyk7/vehicle-helper");
         }
     }
 }
